@@ -18,8 +18,9 @@
         />
     </head>
 
+
     <body>
-        
+        <!-- Login Area Starts -->
         <div id="login-area" class="p-5">
             <h1 class="text-center">Welcome to the Humayan Bank</h1>
 
@@ -32,7 +33,10 @@
                 <button id="login" class="btn btn-success">Enter</button>
             </div>
         </div>
+        <!-- Login Area Ends -->
 
+
+        <!-- Transaction Area Starts  -->
         <div id="transaction-area">
             <div class="row">
                 <div class="col-md-4">
@@ -67,13 +71,14 @@
                 <div class="col-md-6">
                     <div class="submit-area status-area-bottom">
                         <h4>Withdraw</h4> <br>
-                        <input type="text" class="form-control" placeholder="$dollar you want to withdraw">
+                        <input id="withdrawAmount" type="text" class="form-control" placeholder="$dollar you want to withdraw">
                         <br>
-                        <button class="btn btn-success">Withdraw</button>
+                        <button id="addWithdraw" class="btn btn-success">Withdraw</button>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Transaction Area Ends  -->
 
 
 
@@ -104,8 +109,46 @@
                 const totalDeposit = depositNumber + currentDepositNumber;
                 
                 document.getElementById("currentDeposit").innerText = totalDeposit;
+
+
+                const currentBalance = document.getElementById("currentBalance").innerText;
+                const currentBalanceNumber = parseFloat(currentBalance);
+                const totalBalance = depositNumber + currentBalanceNumber;
+
+                document.getElementById("currentBalance").innerText = totalBalance;
+
                 document.getElementById("deposit-amount").value = "";
             })
+
+            // withdraw button event handler
+            const withdrawBtn = document.getElementById("addWithdraw");
+            withdrawBtn.addEventListener("click", function(){
+                const withdrawAmount = document.getElementById("withdrawAmount").value;
+                const withdrawNumber = parseFloat(withdrawAmount);
+
+                const currentWithdraw = document.getElementById("currentWithdraw").innerText;
+                const currenrtWithdrawNumber = parseFloat(currentWithdraw);
+
+                const totalWithdraw = withdrawNumber + currenrtWithdrawNumber;
+
+                document.getElementById("currentWithdraw").innerText = totalWithdraw;
+
+
+
+
+
+                const currentBalance = document.getElementById("currentBalance").innerText;
+                const currentBalanceNumber = parseFloat(currentBalance);
+
+                const totalMainBalance = currentBalanceNumber -  withdrawNumber;
+
+                document.getElementById("currentBalance").innerText = totalMainBalance;
+
+
+
+                document.getElementById("withdrawAmount").value = " ";
+            })
+
         </script>
         
         <!-- Bootstrap JavaScript Libraries -->
