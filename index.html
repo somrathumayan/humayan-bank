@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Welcome to the Humayan Bank</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <link rel="stylesheet" href="css/style.css">
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+    </head>
+
+    <body>
+        
+        <div id="login-area" class="p-5">
+            <h1 class="text-center">Welcome to the Humayan Bank</h1>
+
+            <div class="submit-area p-4">
+                <h4>Login</h4>
+                <input type="text" class="form-control" placeholder="Name" required>
+                <br>
+                <input type="password" class="form-control" placeholder="Password" required>
+                <br>
+                <button id="login" class="btn btn-success">Enter</button>
+            </div>
+        </div>
+
+        <div id="transaction-area">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="deposit status">
+                        <h5>Deposit</h5>
+                        <h2>$ <span id="currentDeposit">00</span></h2>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="withdraw status">
+                        <h5>Withdraw</h5>
+                        <h2>$ <span id="currentWithdraw">00</span></h2>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="balance status">
+                        <h5>Balance</h5>
+                        <h2>$ <span id="currentBalance">1200</span></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row py-5">
+                <div class="col-md-6">
+                    <div class="submit-area status-area-bottom">
+                        <h4>Deposit</h4> <br>
+                        <input id="deposit-amount" type="text" class="form-control" placeholder="$dollar you want to deposit">
+                        <br>
+                        <button id="addDeposit" class="btn btn-success">Deposit</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="submit-area status-area-bottom">
+                        <h4>Withdraw</h4> <br>
+                        <input type="text" class="form-control" placeholder="$dollar you want to withdraw">
+                        <br>
+                        <button class="btn btn-success">Withdraw</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <script>
+            // log in button event handler
+            const login = document.getElementById("login");
+            login.addEventListener("click", function(){
+                const loginArea = document.getElementById("login-area");
+                loginArea.style.display= "none";
+                
+
+                const transactionArea = document.getElementById("transaction-area");
+                transactionArea.style.display = "block";
+            })
+
+
+            // deposit button event handler
+            const depositBtn = document.getElementById("addDeposit");
+            depositBtn.addEventListener("click", function(){
+                const depositAmount = document.getElementById("deposit-amount").value;
+                const depositNumber = parseFloat(depositAmount);
+                // deposit value string ke number e convert korte parseFloat () use kora lage 
+
+                const currentDeposit = document.getElementById("currentDeposit").innerText;
+                const currentDepositNumber = parseFloat(currentDeposit);
+                // deposit input er value nilam 
+
+                const totalDeposit = depositNumber + currentDepositNumber;
+                
+                document.getElementById("currentDeposit").innerText = totalDeposit;
+                document.getElementById("deposit-amount").value = "";
+            })
+        </script>
+        
+        <!-- Bootstrap JavaScript Libraries -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
